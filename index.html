@@ -3,154 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>向佩莹 | OTHER WORKS</title>
+    <title>向佩莹 | SPENCER GABOR STYLE</title>
     <style>
-        /* 1. 基础环境：黑色深邃空间 */
-        body {
-            margin: 0; background: #000; color: #fff;
-            font-family: 'Inter', sans-serif; overflow: hidden;
-            /* 自定义紫色手部指针 */
-            cursor: url('https://img.icons8.com/ios-filled/50/7950f2/hand-cursor.png'), auto;
+        /* 核心视觉：干净背景 + 巨型文字 */
+        body { 
+            margin: 0; background: #f4f4f4; color: #1a1a1a; 
+            font-family: 'Inter', 'Arial Black', sans-serif;
+            overflow: hidden; height: 100vh; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
         }
 
-        /* 2. 空间容器：创造 3D 纵深 */
-        .viewport {
-            width: 100vw; height: 100vh;
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; perspective: 1200px;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        /* 顶部巨型文字标题 */
+        .main-title {
+            font-size: 8vw; font-weight: 900; text-transform: uppercase;
+            letter-spacing: -4px; line-height: 0.9; margin-bottom: -2vw;
+            z-index: 10; pointer-events: none;
         }
 
-        /* 顶部标题：Spencer Gabor 粗体风格 */
-        .header {
-            position: absolute; top: 8%; text-align: center; pointer-events: none;
-        }
-        .header h2 { font-size: 1.2em; letter-spacing: 4px; margin-bottom: 5px; color: #aaa; }
-        .header h1 { font-size: 6vw; margin: 0; font-weight: 900; text-transform: uppercase; }
-
-        /* 3. 3D 旋转舞台 */
-        .stage {
-            position: relative; width: 320px; height: 450px;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        /* 卡片堆叠容器 */
+        .stack-container {
+            position: relative; width: 100%; height: 50vh;
+            display: flex; justify-content: center; align-items: center;
         }
 
-        /* 4. 叠纸卡片堆 */
-        .card-stack {
-            position: absolute; width: 100%; height: 100%;
-            transform-style: preserve-3d;
-            text-decoration: none; color: inherit;
+        /* 基础卡片样式 */
+        .card {
+            position: absolute; width: 280px; height: 350px;
+            border-radius: 20px; border: 4px solid #000;
+            background-size: cover; background-position: center;
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer; text-decoration: none;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
         }
 
-        /* 模拟叠纸厚度感 */
-        .card-stack::before {
-            content: ''; position: absolute; inset: 0;
-            border: 4px solid #fff; border-radius: 24px;
-            background: rgba(255,255,255,0.05);
-            transform: translateZ(-15px) rotate(4deg);
+        /* 悬停时卡片变大并跳出 */
+        .card:hover {
+            transform: scale(1.1) translateY(-30px) rotate(0deg) !important;
+            z-index: 100 !important;
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.2);
         }
 
-        .card-main {
-            position: relative; width: 100%; height: 100%;
-            background: #fff; border: 6px solid #fff; border-radius: 24px;
-            overflow: hidden; display: flex; flex-direction: column;
-            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        /* 扇形排布逻辑 */
+        .c1 { background-color: #A3FF12; background-image: url('73.png'); transform: rotate(-15deg) translateX(-180px); }
+        .c2 { background-color: #2979FF; background-image: url('83.png'); transform: rotate(-5deg) translateX(-60px); }
+        .c3 { background-color: #FF3D00; background-image: url('100.png'); transform: rotate(5deg) translateX(60px); }
+        .c4 { background-color: #FF80AB; background-image: url('101.png'); transform: rotate(15deg) translateX(180px); }
+
+        /* 底部副标题 */
+        .sub-text {
+            font-size: 6vw; font-weight: 900; text-transform: uppercase;
+            color: #d0d0d0; letter-spacing: -2px; line-height: 0.8;
+            margin-top: -2vw; z-index: 1; pointer-events: none;
         }
 
-        .card-main img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .card-label {
-            position: absolute; bottom: 0; width: 100%;
-            background: #fff; color: #000; padding: 15px 0;
-            font-weight: 900; font-size: 1.5em; text-align: center;
-            border-top: 6px solid #000;
+        /* 底部小字标签 */
+        .label {
+            position: absolute; bottom: 15px; left: 15px;
+            background: #fff; color: #000; padding: 5px 12px;
+            border: 3px solid #000; font-weight: 900; font-size: 0.9em;
         }
 
-        /* 空间排布：形成圆弧状 */
-        .item-1 { transform: rotateY(0deg) translateZ(450px); }
-        .item-2 { transform: rotateY(90deg) translateZ(450px); }
-        .item-3 { transform: rotateY(180deg) translateZ(450px); }
-        .item-4 { transform: rotateY(270deg) translateZ(450px); }
-
-        /* 底部提示 */
-        .footer-hint {
-            position: absolute; bottom: 8%; font-weight: 900;
-            letter-spacing: 2px; opacity: 0.6; text-transform: uppercase;
+        @media (max-width: 768px) {
+            .card { width: 180px; height: 230px; }
+            .c1 { transform: rotate(-10deg) translateX(-100px); }
+            .c2 { transform: rotate(-5deg) translateX(-30px); }
+            .c3 { transform: rotate(5deg) translateX(30px); }
+            .c4 { transform: rotate(10deg) translateX(100px); }
         }
     </style>
 </head>
 <body>
 
-<div class="viewport">
-    <div class="header">
-        <h2>艺术与平面设计收藏</h2>
-        <h1>其他设计.</h1>
-    </div>
+    <div class="main-title">向佩莹</div>
 
-    <div class="stage" id="stage">
-        <a href="other-3.html" class="card-stack item-1">
-            <div class="card-main">
-                <img src="73.png">
-                <div class="card-label">IP设计</div>
-            </div>
+    <div class="stack-container">
+        <a href="other-3.html" class="card c1" style="z-index: 4;">
+            <div class="label">IP / CHARACTER</div>
         </a>
 
-        <a href="poster-detail.html" class="card-stack item-2">
-            <div class="card-main">
-                <img src="83.png">
-                <div class="card-label">海报设计</div>
-            </div>
+        <a href="poster-detail.html" class="card c2" style="z-index: 3;">
+            <div class="label">POSTER DESIGN</div>
         </a>
 
-        <a href="other-vi.html" class="card-stack item-3">
-            <div class="card-main">
-                <img src="100.png">
-                <div class="card-label">VI系统</div>
-            </div>
+        <a href="other-vi.html" class="card c3" style="z-index: 2;">
+            <div class="label">VISUAL IDENTITY</div>
         </a>
 
-        <a href="other-creative.html" class="card-stack item-4">
-            <div class="card-main">
-                <img src="101.png">
-                <div class="card-label">文创产品</div>
-            </div>
+        <a href="other-creative.html" class="card c4" style="z-index: 1;">
+            <div class="label">CREATIVE MERCH</div>
         </a>
     </div>
 
-    <div class="footer-hint">SELECT A CARD STACK TO VIEW PROJECTS</div>
-</div>
-
-<script>
-    const stage = document.getElementById('stage');
-    let currentAngle = 0;
-    let isDragging = false;
-    let startX = 0;
-
-    // 鼠标点击/滑动逻辑
-    window.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        let deltaX = e.clientX - startX;
-        if (Math.abs(deltaX) > 100) {
-            currentAngle += deltaX > 0 ? 90 : -90;
-            stage.style.transform = `rotateY(${currentAngle}deg)`;
-            startX = e.clientX; // 重置防止连续旋转过快
-        }
-    });
-
-    window.addEventListener('mouseup', () => isDragging = false);
-
-    // 键盘支持
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') currentAngle += 90;
-        if (e.key === 'ArrowRight') currentAngle -= 90;
-        stage.style.transform = `rotateY(${currentAngle}deg)`;
-    });
-</script>
+    <div class="sub-text">ILLUSTRATOR,<br>DESIGNER</div>
 
 </body>
 </html>
