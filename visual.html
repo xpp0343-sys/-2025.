@@ -5,47 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTHER DESIGNS | 向佩莹</title>
     <style>
-        /* 核心视觉：与 UI 页面完全一致 */
         body { margin: 0; background: #ffffff; color: #000; font-family: 'Inter', sans-serif; text-align: center; }
-        
-        nav { 
-            padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; 
-        }
-        
-        .back-pill { 
-            background: #fff; color: #000; text-decoration: none; font-weight: 900; 
-            padding: 12px 30px; border-radius: 100px; border: 4px solid #000; 
-            font-size: 1.3em; transition: 0.2s; 
-        }
+        nav { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; }
+        .back-pill { background: #fff; color: #000; text-decoration: none; font-weight: 900; padding: 12px 30px; border-radius: 100px; border: 4px solid #000; font-size: 1.3em; transition: 0.2s; }
         .back-pill:hover { background: #000; color: #fff; transform: scale(1.05); }
-
         .hero { padding: 40px 20px 80px 20px; }
         .sub-head { text-transform: uppercase; font-weight: 900; letter-spacing: 1px; font-size: 1.8em; margin-bottom: 10px; }
         h1 { font-size: 12vw; line-height: 0.82; margin: 0; font-weight: 900; text-transform: uppercase; letter-spacing: -6px; }
 
-        /* 网格布局 */
         .card-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
             gap: 40px; padding: 0 60px 120px; max-width: 1600px; margin: 0 auto; 
         }
-
         .card { 
-            background: #fff; border-radius: 35px; overflow: hidden; 
-            text-decoration: none; color: #000; border: 6px solid #000; 
-            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
-            display: flex; flex-direction: column; 
+            background: #fff; border-radius: 35px; overflow: hidden; text-decoration: none; color: #000; border: 6px solid #000; 
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); display: flex; flex-direction: column; 
         }
-        
-        /* 悬停硬阴影 */
         .card:hover { transform: translate(-12px, -12px); box-shadow: 18px 18px 0px #000; }
-        
-        .card-top { 
-            height: 350px; display: flex; justify-content: center; align-items: center; 
-            border-bottom: 6px solid #000; overflow: hidden; background: #f0f0f0;
-        }
-        .card-top img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .card:hover .card-top img { scale: 1.05; }
-        
-        .card-info { padding: 40px; text-align: left; background: #fff; flex-grow: 1; }
-        .card-num { font-weight: 900; font-size: 1.5em; display: block; margin-bottom: 10px; opacity:
+        .card-top { height: 350px; display: flex; justify-content: center; align-items: center; border-bottom: 6px solid #000; overflow: hidden; background: #f0f0f0; }
+        .card-top img { width: 100%; height: 100%; object-fit: cover; }
+        .card-info { padding: 40px; text-align: left; }
+        .card-num { font-weight: 900; font-size: 1.5em; opacity: 0.3; }
+        .card-title { font-weight: 900; font-size: 2.2em; line-height: 1; text-transform: uppercase; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="back-pill">← INDEX</a>
+        <div style="font-size: 2.2em; font-weight: 900;">向佩莹</div>
+    </nav>
+    <div class="hero">
+        <div class="sub-head">Art & Graphic Collection</div>
+        <h1>OTHER<br>DESIGN.</h1>
+    </div>
+    <div class="card-grid">
+        <a href="other-3.html" class="card">
+            <div class="card-top"><img src="73.png"></div>
+            <div class="card-info">
+                <span class="card-num">01</span>
+                <div class="card-title">IP设计<br>CHARACTER</div>
+            </div>
+        </a>
+        <a href="poster-detail.html" class="card">
+            <div class="card-top"><img src="83.png"></div>
+            <div class="card-info">
+                <span class="card-num">02</span>
+                <div class="card-title">海报设计<br>POSTER</div>
+            </div>
+        </a>
+        <a href="other-vi.html" class="card">
+            <div class="card-top"><img src="90.png"></div>
+            <div class="card-info">
+                <span class="card-num">03</span>
+                <div class="card-title">VI设计<br>IDENTITY</div>
+            </div>
+        </a>
+        <a href="other-creative.html" class="card">
+            <div class="card-top"><img src="100.png"></div>
+            <div class="card-info">
+                <span class="card-num">04</span>
+                <div class="card-title">文创设计<br>CREATIVE</div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
