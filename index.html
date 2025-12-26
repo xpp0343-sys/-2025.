@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>向佩莹 | PORTFOLIO</title>
     <style>
-        /* 核心视觉：干净白底 + 巨型文字 + 扇形卡片 */
+        /* 复刻 Spencer Gabor 设计美学 */
         body { 
             margin: 0; background: #fdfdfd; color: #000; 
             font-family: 'Arial Black', sans-serif;
@@ -13,21 +13,22 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
-        /* 顶部巨型标题：复刻截图中的视觉张力 */
+        /* 顶部巨型标题：确保 pointer-events: none 不遮挡点击 */
         .main-header {
             font-size: 10vw; font-weight: 900; text-transform: uppercase;
             letter-spacing: -6px; line-height: 0.8; margin-bottom: -4vw;
-            z-index: 20; pointer-events: none; text-align: center;
+            z-index: 10; pointer-events: none; text-align: center;
         }
 
-        /* 卡片扇形容器 */
+        /* 扇形卡片容器 */
         .fan-stage {
-            position: relative; width: 100%; height: 50vh;
+            position: relative; width: 100%; height: 55vh;
             display: flex; justify-content: center; align-items: center;
-            perspective: 1500px;
+            perspective: 1200px;
+            z-index: 50; 
         }
 
-        /* 统一卡片样式：粗边框 + 圆角 */
+        /* 卡片基础样式 */
         .nav-card {
             position: absolute; width: 280px; height: 380px;
             border-radius: 24px; border: 6px solid #000;
@@ -39,7 +40,7 @@
             padding: 25px; box-sizing: border-box;
         }
 
-        /* 悬停交互：卡片弹起变黑，文字变白 */
+        /* 悬停交互 */
         .nav-card:hover {
             transform: scale(1.1) translateY(-60px) rotate(0deg) !important;
             z-index: 100 !important;
@@ -47,16 +48,15 @@
             box-shadow: 25px 25px 0px rgba(0,0,0,0.2);
         }
 
-        /* 扇形排布坐标：精确还原 Spencer Gabor 截图 */
-        .c1 { transform: rotate(-12deg) translateX(-220px); }
-        .c2 { transform: rotate(-4deg) translateX(-70px); }
-        .c3 { transform: rotate(4deg) translateX(70px); }
-        .c4 { transform: rotate(12deg) translateX(220px); }
+        /* 扇形分布位置 */
+        .c1 { transform: rotate(-12deg) translateX(-220px); background-color: #FFD600; } /* UI底色 */
+        .c2 { transform: rotate(-4deg) translateX(-70px); background-color: #FF3D00; }  /* 策划案底色 */
+        .c3 { transform: rotate(4deg) translateX(70px); background-color: #2979FF; }   /* 视频底色 */
+        .c4 { transform: rotate(12deg) translateX(220px); background-color: #FF80AB; } /* 其他设计底色 */
 
-        .card-num { font-size: 1.8em; font-weight: 900; }
-        .card-title { font-size: 2.5em; font-weight: 900; line-height: 1; text-transform: uppercase; }
+        .card-num { font-size: 1.8em; font-weight: 900; pointer-events: none; }
+        .card-title { font-size: 2.5em; font-weight: 900; line-height: 1; text-transform: uppercase; pointer-events: none; }
 
-        /* 底部背景文字 */
         .footer-text {
             font-size: 6vw; font-weight: 900; color: #e8e8e8;
             letter-spacing: -2px; line-height: 0.8; margin-top: -3vw;
@@ -69,28 +69,28 @@
     <div class="main-header">XIANG PEIYING</div>
 
     <div class="fan-stage">
-        <a href="ui-design.html" class="nav-card c1" style="z-index: 4;">
+        <a href="ui.html" class="nav-card c1">
             <span class="card-num">01</span>
             <div class="card-title">UI<br>DESIGN</div>
         </a>
 
-        <a href="planning.html" class="nav-card c2" style="z-index: 3;">
+        <a href="plan.html" class="nav-card c2">
             <span class="card-num">02</span>
             <div class="card-title">PLAN<br>CASE</div>
         </a>
 
-        <a href="video.html" class="nav-card c3" style="z-index: 2;">
+        <a href="video.html" class="nav-card c3">
             <span class="card-num">03</span>
             <div class="card-title">VIDEO<br>WORK</div>
         </a>
 
-        <a href="visual.html" class="nav-card c4" style="z-index: 1;">
+        <a href="visual.html" class="nav-card c4">
             <span class="card-num">04</span>
             <div class="card-title">OTHER<br>WORKS</div>
         </a>
     </div>
 
-    <div class="footer-text">DESIGNER &<br>ART DIRECTOR</div>
+    <div class="footer-text">ILLUSTRATOR &<br>DESIGNER</div>
 
 </body>
 </html>
