@@ -1,3 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逐光 | Case Study</title>
+    <style>
+        body { margin: 0; background: #50E3C2; font-family: sans-serif; text-align: center; }
+        nav { padding: 20px; background: #fff; border-bottom: 5px solid #000; display: flex; justify-content: space-between; align-items: center; }
+        .back-pill { text-decoration: none; color: #000; font-weight: 900; border: 3px solid #000; padding: 8px 20px; border-radius: 50px; }
+        #gallery-container { background: #fff; padding: 40px 0; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .case-img { width: 90%; max-width: 1000px; border: 5px solid #000; border-radius: 15px; box-shadow: 12px 12px 0px #000; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="ui.html" class="back-pill">← BACK</a>
+    <div style="font-weight:900">CHASING LIGHT</div>
+</nav>
+
+<div id="gallery-container">
+    </div>
+
 <script>
     const container = document.getElementById('gallery-container');
     const totalImages = 12; 
@@ -5,15 +29,15 @@
     for (let i = 1; i <= totalImages; i++) {
         const img = document.createElement('img');
         
-        // 注意：这里文件名末尾加上了你截图里的那个句号
+        // 关键点：匹配你 GitHub 截图里那个带句号的文件名
         img.src = `ui1-${i}.png。`; 
         
         img.className = 'case-img';
         img.alt = `Slide ${i}`;
         
+        // 容错处理：如果带句号的加载失败，尝试加载不带句号的
         img.onerror = function() {
-            // 如果某张图确实没句号，它会尝试再找一次没句号的版本
-            if (!this.src.endsWith('.png')) {
+            if (this.src.includes('png。')) {
                 this.src = `ui1-${i}.png`;
             } else {
                 this.style.display = 'none';
@@ -23,3 +47,6 @@
         container.appendChild(img);
     }
 </script>
+
+</body>
+</html>
