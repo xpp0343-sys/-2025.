@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>H5精准对接 - UI Case Study</title>
+    <style>
+        body { margin: 0; background: #4A90E2; color: #fff; font-family: 'Helvetica', sans-serif; }
+        
+        /* 顶部导航 */
+        nav { padding: 40px; border-bottom: 5px solid #000; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+        .back-btn { color: #000; text-decoration: none; font-weight: 900; font-size: 1.2em; border: 3px solid #000; padding: 10px 20px; transition: 0.2s; }
+        .back-btn:hover { background: #000; color: #fff; }
 
+        /* 头部展示 */
+        .hero { padding: 100px 40px; border-bottom: 5px solid #000; color: #000; background: #fff; }
+        h1 { font-size: 8vw; line-height: 0.9; margin: 0; font-weight: 900; text-transform: uppercase; }
+        .tagline { font-size: 1.5em; margin-top: 30px; font-weight: bold; background: #000; color: #fff; display: inline-block; padding: 5px 15px; }
+
+        /* 内容区 */
+        .content { padding: 60px 40px; background: #4A90E2; }
+        .case-img { 
+            width: 100%; 
+            border: 5px solid #000; 
+            margin-bottom: 60px; 
+            box-shadow: 20px 20px 0px #000; 
+            background: #fff;
+        }
+
+        footer { padding: 80px 40px; text-align: center; font-weight: 900; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="ui.html" class="back-btn">← BACK</a>
+    <div style="color: #000; font-weight: 900;">03 / H5 RECRUITMENT</div>
+</nav>
+
+<div class="hero">
+    <h1>PRECISION<br>MATCHING.</h1>
+    <div class="tagline">H5设计：实现人才与雇主精准对接</div>
+</div>
+
+<div class="content">
+    <img src="3.png" class="case-img" alt="H5作品展示">
+</div>
+
+<footer>
+    XIANG PEIYING DESIGN © 2025
+</footer>
+
+</body>
+</html>
