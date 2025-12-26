@@ -2,55 +2,43 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>H5精准对接 - UI Case Study</title>
+    <title>H5精准对接 | Case Study</title>
     <style>
-        body { margin: 0; background: #4A90E2; color: #fff; font-family: 'Helvetica', sans-serif; }
-        
-        /* 顶部导航 */
-        nav { padding: 40px; border-bottom: 5px solid #000; display: flex; justify-content: space-between; align-items: center; background: #fff; position: sticky; top: 0; z-index: 100; }
-        .back-btn { color: #000; text-decoration: none; font-weight: 900; font-size: 1.2em; border: 3px solid #000; padding: 10px 20px; transition: 0.3s; }
-        .back-btn:hover { background: #000; color: #fff; }
-
-        /* 头部展示 */
-        .hero { padding: 100px 40px; border-bottom: 5px solid #000; color: #000; background: #fff; text-align: center; }
-        h1 { font-size: 8vw; line-height: 0.9; margin: 0; font-weight: 900; text-transform: uppercase; }
-        .tagline { font-size: 1.5em; margin-top: 30px; font-weight: bold; background: #000; color: #fff; display: inline-block; padding: 5px 15px; }
-
-        /* 内容区 */
-        .content { padding: 60px 40px; background: #4A90E2; display: flex; flex-direction: column; align-items: center; gap: 40px; }
-        .case-img { 
-            width: 100%; 
-            max-width: 900px; 
-            border: 5px solid #000; 
-            box-shadow: 20px 20px 0px #000; 
-            background: #fff; 
-            display: block;
+        /* 采用匹配 H5 招募风格的蓝色调 */
+        body { margin: 0; background: #4A90E2; font-family: sans-serif; text-align: center; }
+        nav { 
+            padding: 20px; background: #fff; border-bottom: 5px solid #000; 
+            display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 100;
         }
-
-        footer { padding: 80px 40px; text-align: center; font-weight: 900; letter-spacing: 2px; }
+        .back-pill { 
+            text-decoration: none; color: #000; font-weight: 900; 
+            border: 3px solid #000; padding: 8px 20px; border-radius: 50px; 
+        }
+        .gallery { 
+            background: #fff; padding: 40px 0; 
+            display: flex; flex-direction: column; align-items: center; gap: 30px; 
+        }
+        .case-img { 
+            width: 90%; max-width: 1000px; 
+            border: 5px solid #000; border-radius: 15px; 
+            box-shadow: 12px 12px 0px #000; display: block; 
+        }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="ui.html" class="back-btn">← BACK</a>
-    <div style="color: #000; font-weight: 900;">03 / H5 RECRUITMENT</div>
+    <a href="ui.html" class="back-pill">← BACK</a>
+    <div style="font-weight:900">03 / RECRUITMENT H5</div>
 </nav>
 
-<div class="hero">
-    <h1>PRECISION<br>MATCHING.</h1>
-    <div class="tagline">H5设计：实现人才与雇主精准对接</div>
+<div class="gallery">
+    <img src="3.png" class="case-img" alt="H5封面">
+    <img src="15.png" class="case-img" alt="H5内容1">
+    <img src="16.png" class="case-img" alt="H5内容2">
+    <img src="17.png" class="case-img" alt="H5内容3">
 </div>
-
-<div class="content">
-    <img src="3.png" class="case-img" alt="H5作品展示1">
-    
-    <img src="13.png" class="case-img" alt="H5作品展示2">
-</div>
-
-<footer>
-    XIANG PEIYING DESIGN © 2025
-</footer>
 
 </body>
 </html>
