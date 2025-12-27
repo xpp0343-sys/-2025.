@@ -5,66 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>向佩莹 | PORTFOLIO</title>
     <style>
-        /* 复刻 Spencer Gabor 官网风格 */
+        /* 全局背景：可以使用一张浅色噪点图或渐变色，玻璃效果会更明显。这里暂时用纯净白底。 */
         body { 
-            margin: 0; background: #fdfdfd; color: #000; 
+            margin: 0; background: #f8f9fa; color: #000; 
             font-family: 'Arial Black', sans-serif;
             overflow: hidden; height: 100vh;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
+            /* 如果想要更强的背景透视感，可以取消下面这行的注释，换成你喜欢的背景图 */
+            /* background-image: url('你的背景图.jpg'); background-size: cover; */
         }
 
-        /* 顶部巨型标题：使用 pointer-events: none 确保不遮挡鼠标点击 */
+        /* 顶部巨型标题 */
         .main-header {
             font-size: 10vw; font-weight: 900; text-transform: uppercase;
             letter-spacing: -6px; line-height: 0.8; margin-bottom: -4vw;
-            z-index: 1; /* 降低层级，防止遮挡卡片 */
-            pointer-events: none; text-align: center;
-            position: relative;
+            z-index: 1; pointer-events: none; text-align: center; position: relative;
+            /* 标题文字稍微带点透明度，融入背景 */
+            color: rgba(0, 0, 0, 0.85);
         }
 
-        /* 扇形卡片容器 */
+        /* 扇形容器 */
         .fan-stage {
             position: relative; width: 100%; height: 55vh;
             display: flex; justify-content: center; align-items: center;
-            perspective: 1500px;
-            z-index: 999; /* 提高容器层级，确保在最前面 */
+            perspective: 1500px; z-index: 999; 
         }
 
-        /* 卡片基础样式 */
+        /* Let's Make Some Glass! 玻璃卡片核心样式 */
         .nav-card {
             position: absolute; width: 280px; height: 380px;
-            border-radius: 24px; border: 6px solid #000;
-            background-color: #fff;
+            border-radius: 24px; 
+            /* 1. 玻璃核心：半透明背景 + 模糊滤镜 */
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            /* 2. 精致边框：半透明细白边 */
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            /* 3. 柔和光影：多层光晕增加通透感 */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            
             transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer; text-decoration: none; color: #000;
-            box-shadow: 12px 12px 0px rgba(0,0,0,0.1);
+            cursor: pointer; text-decoration: none; 
+            /* 卡片内文字改为白色，对比度更高 */
+            color: #fff; 
             display: flex; flex-direction: column; justify-content: space-between;
             padding: 25px; box-sizing: border-box;
+            overflow: hidden; /* 确保内部光晕不溢出 */
         }
 
-        /* 悬停效果：弹起并变色 */
+        /* 增加一个内部光晕层，让玻璃更有质感 */
+        .nav-card::before {
+            content: ''; position: absolute; top: 0; left: -50%; width: 100%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg); transition: 0.5s; pointer-events: none;
+        }
+
+        /* 悬停交互：更亮、更透、浮起 */
         .nav-card:hover {
-            transform: scale(1.1) translateY(-60px) rotate(0deg) !important;
+            transform: scale(1.08) translateY(-50px) rotate(0deg) !important;
             z-index: 1000 !important;
-            background: #000 !important; color: #fff !important;
-            box-shadow: 25px 25px 0px rgba(0,0,0,0.2);
+            /* 悬停时背景更亮一点 */
+            background: rgba(255, 255, 255, 0.25) !important;
+            /* 边框更清晰 */
+            border-color: rgba(255, 255, 255, 0.8) !important;
+            /* 阴影更深邃 */
+            box-shadow: 0 15px 45px 0 rgba(31, 38, 135, 0.25) !important;
         }
+        /* 悬停时光晕划过 */
+        .nav-card:hover::before { left: 150%; transition: 0.7s; }
 
-        /* 四大板块扇形分布与配色 */
-        .c1 { transform: rotate(-12deg) translateX(-220px); background-color: #FFD600; } 
-        .c2 { transform: rotate(-4deg) translateX(-70px); background-color: #FF3D00; }  
-        .c3 { transform: rotate(4deg) translateX(70px); background-color: #2979FF; }   
-        .c4 { transform: rotate(12deg) translateX(220px); background-color: #FF80AB; } 
+        /* 四大板块带色彩的玻璃 (使用半透明的 rgba 颜色) */
+        /* UI设计：透黄色 */
+        .c1 { transform: rotate(-12deg) translateX(-220px); background: rgba(255, 214, 0, 0.25); } 
+        /* 策划案：透红色 */
+        .c2 { transform: rotate(-4deg) translateX(-70px); background: rgba(255, 61, 0, 0.25); }  
+        /* 视频设计：透蓝色 */
+        .c3 { transform: rotate(4deg) translateX(70px); background: rgba(41, 121, 255, 0.25); }   
+        /* 其他设计：透粉色 */
+        .c4 { transform: rotate(12deg) translateX(220px); background: rgba(255, 128, 171, 0.25); } 
 
-        .card-num { font-size: 1.8em; font-weight: 900; }
-        .card-title { font-size: 2.5em; font-weight: 900; line-height: 1; text-transform: uppercase; }
+        .card-num { font-size: 1.8em; font-weight: 900; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .card-title { font-size: 2.5em; font-weight: 900; line-height: 1; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 
         /* 底部背景文字 */
         .footer-text {
-            font-size: 6vw; font-weight: 900; color: #e8e8e8;
+            font-size: 6vw; font-weight: 900; color: rgba(0, 0, 0, 0.1);
             letter-spacing: -2px; line-height: 0.8; margin-top: -3vw;
-            z-index: 1; text-align: center; pointer-events: none;
-            position: relative;
+            z-index: 1; text-align: center; pointer-events: none; position: relative;
         }
     </style>
 </head>
